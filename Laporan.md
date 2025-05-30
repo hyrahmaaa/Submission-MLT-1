@@ -49,14 +49,28 @@ Dalam proyek ini, untuk memahami data harga saham BBRI yang akan digunakan, perl
 - Analisis Korelasi: Memeriksa korelasi antara berbagai fitur harga saham.
 
 ## Data Preparation
-
-
+Dalam proyek prediksi saham BBRI ini, tahapan data preparation yang dilakukan meliputi:
+- Pembagian Dataset: Data historis harga saham BBRI dibagi menjadi dua bagian, yaitu training set dan testing set, menggunakan fungsi train_test_split dari library sklearn. Pembagian ini penting agar model dapat dilatih pada sebagian data (training set) dan kemudian dievaluasi kemampuannya dalam memprediksi data yang belum pernah dilihat sebelumnya (testing set). Proporsi pembagian yang digunakan adalah 80% untuk training dan 20% untuk testing. Alasan: Pembagian ini diperlukan untuk menghindari overfitting, yaitu kondisi di mana model bekerja sangat baik pada data latih tetapi buruk pada data baru. Dengan menguji model pada data yang terpisah, maka dapat memperoleh perkiraan yang lebih realistis tentang kinerja model di dunia nyata.
+- Normalisasi Data: Fitur-fitur harga saham dinormalisasi menggunakan teknik MinMaxScaler. Normalisasi ini menskalakan nilai-nilai fitur ke dalam rentang antara 0 dan 1. Alasan: Normalisasi penting terutama ketika menggunakan algoritma neural network seperti LSTM. Normalisasi membantu mempercepat proses pelatihan model, mencegah fitur dengan skala yang lebih besar mendominasi perhitungan, dan dapat meningkatkan stabilitas serta kinerja model secara keseluruhan. Dengan skala yang seragam, gradien dalam proses pembelajaran menjadi lebih terkelola.
 
 ## Modeling
+Dalam proyek ini, algoritma utama yang digunakan untuk pemodelan adalah Long Short-Term Memory (LSTM).
 
+Kelebihan LSTM:
+- Kemampuan Memproses Data Berurutan: LSTM dirancang khusus untuk memproses data berurutan (seperti time series) dan memiliki kemampuan untuk mempelajari ketergantungan jangka panjang dalam data. Ini sangat relevan untuk prediksi harga saham di mana pergerakan harga di masa lalu dapat mempengaruhi harga di masa depan.
+- Mengatasi Masalah Vanishing/Exploding Gradients: Dibandingkan dengan Recurrent Neural Network (RNN) tradisional, LSTM memiliki mekanisme gate (input, forget, output, cell state) yang membantu mengatasi masalah vanishing dan exploding gradients, sehingga memungkinkan pelatihan model yang lebih dalam dan lebih efektif.
 
+Kekurangan LSTM:
+- Komputasi yang Lebih Mahal: Arsitektur LSTM yang lebih kompleks dengan banyak parameter dapat membutuhkan sumber daya komputasi yang lebih besar dan waktu pelatihan yang lebih lama dibandingkan dengan model yang lebih sederhana.
+- Potensi Overfitting: Model LSTM dengan banyak lapisan dan unit dapat rentan terhadap overfitting jika tidak diregularisasi dengan baik atau jika data pelatihan tidak mencukupi.
 
 ## Evaluation
+Untuk mengevaluasi kinerja model prediksi harga saham BBRI berbasis LSTM, digunakan tiga metrik evaluasi utama: Mean Absolute Error (MAE), Mean Squared Error (MSE), dan Root Mean Squared Error (RMSE).
 
+- Mean Absolute Error (MAE) mengukur nilai absolut rata-rata dari selisih antara nilai prediksi dan nilai aktual. MAE memberikan gambaran seberapa besar rata-rata kesalahan prediksi dalam satuan yang sama dengan data aslinya. Berdasarkan hasil, MAE model adalah 110.9495.
 
+- Mean Squared Error (MSE) mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai aktual. MSE memberikan bobot yang lebih besar pada kesalahan yang lebih besar karena adanya operasi kuadrat. Berdasarkan hasil, MSE model adalah 20332.4275.
 
+- Root Mean Squared Error (RMSE) adalah akar kuadrat dari MSE. RMSE juga mengukur besarnya kesalahan prediksi, tetapi dalam satuan yang sama dengan data aslinya, dan memberikan bobot yang lebih besar pada kesalahan yang besar dibandingkan dengan MAE. Berdasarkan hasil, RMSE model adalah 142.5918.
+
+Nilai-nilai MAE, MSE, dan RMSE ini akan digunakan untuk mengevaluasi seberapa baik model LSTM dalam memprediksi harga saham BBRI pada data testing. Semakin kecil nilai metrik-metrik ini, semakin baik kinerja modelnya.
