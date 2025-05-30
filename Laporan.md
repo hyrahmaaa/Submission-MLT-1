@@ -29,48 +29,34 @@ Menjelaskan tujuan dari pernyataan masalah:
 Proyek yang dilakukan yaitu membangun dan melatih model LSTM, yang merupakan jenis recurrent neural network yang sangat efektif dalam memproses data berurutan seperti data harga saham. Model LSTM akan dilatih menggunakan data historis harga saham BBRI untuk mempelajari pola dan ketergantungan temporal dalam data. Pengukuran keberhasilan model ini akan dievaluasi menggunakan metrik seperti Mean Squared Error (MSE), Root Mean Squared Error (RMSE), atau Mean Absolute Error (MAE) untuk mengukur seberapa akurat prediksi harga saham yang dihasilkan dibandingkan dengan harga aktual.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Data yang diambil adalah data harga saham PT Bank Rakyat Indonesia (Persero) Tbk (BBRI.JK) dari Yahoo Finance. Adapun data yang diambil adalah data historis 10 tahun yang lalu (1 Januari 2015 hingga 28 Mei 2025). Data cenderung naik dan turun sehingga AI harus mempelajari model dengan baik. Rincian data berjumlah 2.565 data dengan 7 variabel.
+URL : https://finance.yahoo.com/quote/BBRI.JK/
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+### Variabel-variabel pada Harga Saham BBRI.JK dataset adalah sebagai berikut:
+- Open: Harga saham pada saat pembukaan perdagangan di hari tersebut. Ini adalah harga transaksi pertama untuk hari itu.
+- High: Harga tertinggi yang dicapai oleh saham selama sesi perdagangan di hari tersebut.
+- Low: Harga terendah yang dicapai oleh saham selama sesi perdagangan di hari tersebut.
+- Close: Harga saham pada saat penutupan perdagangan di hari tersebut. Ini sering dianggap sebagai harga paling penting untuk hari itu.
+- Volume: Jumlah saham yang diperdagangkan selama sesi perdagangan di hari tersebut. Volume yang tinggi dapat mengindikasikan minat yang besar pada saham tersebut.
+- Dividends: Jumlah dividen tunai yang dibayarkan per saham pada tanggal tertentu. Jika tidak ada dividen, nilainya biasanya nol.
+- Stock Splits: Informasi mengenai pemecahan saham (stock split). Ini biasanya dinyatakan sebagai rasio (misalnya, 2:1 berarti setiap pemegang saham menerima dua saham baru untuk setiap satu saham lama yang mereka miliki). Jika tidak ada pemecahan saham, nilainya mungkin 1 atau indikator lain yang menunjukkan tidak ada perubahan.
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+Dalam proyek ini, untuk memahami data harga saham BBRI yang akan digunakan, perlu dilakukann beberapa tahapan Exploratory Data Analysis (EDA) dan visualisasi data, antara lain:
+- Melihat Struktur Data: Memeriksa format data, tipe data setiap kolom.
+- Analisis Statistik Deskriptif: Menghitung statistik deskriptif untuk setiap fitur harga saham untuk mendapatkan gambaran umum distribusi data.
+- Visualisasi Data Time Series: Membuat plot garis harga penutupan saham BBRI terhadap waktu untuk mengidentifikasi tren.
+- Pemeriksaan Missing Values: Mengidentifikasi dan menangani jika ada nilai yang hilang dalam dataset.
+- Analisis Korelasi: Memeriksa korelasi antara berbagai fitur harga saham.
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
 
